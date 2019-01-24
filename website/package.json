@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write \"**/*.ts\" \"**/*.md\""
+    "format": "prettier --write '**/*.{ts,scss,html,md}'"
   },
   "dependencies": {
     "@angular/cdk": "^7.2.1",
