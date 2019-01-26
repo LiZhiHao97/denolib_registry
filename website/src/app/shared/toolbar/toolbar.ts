@@ -7,6 +7,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
   styleUrls: ["./toolbar.scss"]
 })
 export class Toolbar implements OnInit {
+  logo: string = '../../../assets/img/favicon.png';
   ngOnInit() {}
 }
 

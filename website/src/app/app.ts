@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToolbarModule } from "./shared/toolbar";
 import { RouterModule } from "@angular/router";
 import { APP_ROUTES } from "./app_routes";
@@ -14,7 +15,12 @@ export class App {}
 
 @NgModule({
   declarations: [App],
-  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES), ToolbarModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(APP_ROUTES),
+    ToolbarModule,
+    FlexLayoutModule
+  ],
   bootstrap: [App]
 })
 export class AppModule {}

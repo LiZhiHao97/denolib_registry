@@ -1,0 +1,42 @@
+.toolbar {
+  height: 70px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  padding: 0 60px;
+
+  a.logo {
+    display: block;
+    height: 100%;
+    line-height: 70px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, .7);
+    font-size: 30px;
+
+    img {
+      height: 80%;
+      margin-top: 6px;
+    }
+  }
+
+  .search {
+    margin: 14px 0;
+
+    input, button {
+      outline: none;
+      border: none;
+    }
+
+    input {
+      background: #f2f2f2;
+      border-radius: 4px 0 0 4px;
+      text-indent: 1em;
+      font-size: 18px;
+    }
+
+    button {
+      background: rgba(0, 0, 0, .4);
+      border-radius: 0 4px 4px 0;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
