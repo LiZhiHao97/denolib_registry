@@ -1,0 +1,27 @@
+.key-words {
+  h2 {
+    width: calc( 100% - 420px );
+    border-bottom: 1px dotted #ccc;
+    color: rgba(0, 0, 0, .7);
+    padding-top: 40px;
+    padding-bottom: 16px;
+    font-size: 18px;
+  }
+
+  .key-words-items {
+    padding-top: 18px;
+
+    a {
+      font-size: 18px;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.5);
+      margin-right: 20px;
+      font-weight: 700;
+      transition: color .3s ease-in-out;
+
+      &:hover {
+        color: rgba(0, 0, 0, .7);
+      }
+    }
+  }
+}

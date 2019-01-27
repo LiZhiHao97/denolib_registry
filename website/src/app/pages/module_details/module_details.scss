@@ -1,0 +1,15 @@
+.detail {
+  padding-top: 60px;
+  
+  .title {
+    color: rgba(0, 0, 0, 0.7);
+
+    .registry-name {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .registry-version {
+      font-family: "Fira Mono", "Andale Mono", "Consolas", monospace;
+    }
+  }
+}

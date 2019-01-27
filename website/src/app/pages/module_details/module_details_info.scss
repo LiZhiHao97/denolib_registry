@@ -1,0 +1,30 @@
+.info {
+  padding-top: 60px;
+
+  .info-data {
+    ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+
+      li {
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+
+        .info-name {
+          color: rgba(0, 0, 0, .5);
+          margin-top: 16px;
+          font-weight: 500;
+        }
+        
+        .info-value, .info-value a {
+          color: rgba(0, 0, 0, .7);
+          font-weight: 700;
+          font-size: 18px;
+          margin-top: 10px;
+          margin-bottom: 16px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
