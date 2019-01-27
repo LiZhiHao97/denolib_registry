@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToolbarModule } from "./shared/toolbar";
+import { ModuleDetailsModule } from './pages/module_details';
 import { RouterModule } from "@angular/router";
 import { APP_ROUTES } from "./app_routes";
 
@@ -19,6 +20,7 @@ export class App {}
     BrowserModule,
     RouterModule.forRoot(APP_ROUTES),
     ToolbarModule,
+    ModuleDetailsModule,
     FlexLayoutModule
   ],
   bootstrap: [App]
