@@ -1,0 +1,13 @@
+sudo: required
+addons:
+  chrome: stable
+language: node_js
+node_js:
+  - '11'
+before_script:
+  - 'export DISPLAY=:99.0'
+  - 'sh -e /etc/init.d/xvfb start'
+install:
+  - cd api && yarn
+script:
+  - yarn test
