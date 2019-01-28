@@ -1,9 +1,10 @@
 import { Module } from "@nestjs/common";
 import { BadgeController } from "./badge_controller";
-import { BadgeService } from "./badge_service";
+import { DenomodModule } from "../denomod/denomod_module";
 
 @Module({
+  imports: [DenomodModule],
   controllers: [BadgeController],
-  providers: [BadgeService]
+  providers: []
 })
 export class BadgeModule {}

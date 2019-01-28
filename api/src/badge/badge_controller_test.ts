@@ -1,18 +1,43 @@
 import { Test, TestingModule } from "@nestjs/testing";
+import { Response } from "express";
 import { BadgeController } from "./badge_controller";
+import { DenomodService } from "../denomod/denomod_service";
+import { badgeConfig, DENOLIB_JSON_URL } from "../common/tool";
 
-describe("Badge Controller", () => {
-  let controller: BadgeController;
+const mockDenomodService = {
+  tryToRegister: (scope: string, repo: string) => {}
+};
+
+describe("AppController", () => {
+  let badgeController: BadgeController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const app: TestingModule = await Test.createTestingModule({
       controllers: [BadgeController]
-    }).compile();
+    })
+      .overrideProvider(DenomodService)
+      .useValue(mockDenomodService)
+      .compile();
 
-    controller = module.get<BadgeController>(BadgeController);
+    badgeController = app.get<BadgeController>(BadgeController);
   });
 
-  it("should be defined", () => {
-    expect(controller).toBeDefined();
+  describe("generate", () => {
+    it("should redirect to shields", () => {
+      let targetUrl = "";
+      const res = {
+        redirect: (url: string) => {
+          targetUrl = url;
+        }
+      } as Response;
+      badgeController.generate("zhmushan", "abc", res);
+      expect(targetUrl).toBe(
+        `https://img.shields.io/badge/dynamic/json.svg?label=${
+          badgeConfig.label
+        }&query=${badgeConfig.query}&style=${
+          badgeConfig.style
+        }&url=${DENOLIB_JSON_URL("zhmushan", "abc")}`
+      );
+    });
   });
 });
