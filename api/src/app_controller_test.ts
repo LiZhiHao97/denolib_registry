@@ -30,7 +30,7 @@ describe("AppController", () => {
         }
       } as Response;
       appController.master("zhmushan", "abc", "mod.ts", res);
-      expect(targetUrl).toBe("/zhmushan/abc@master/mod.ts");
+      expect(targetUrl).toBe("/proxy/zhmushan/abc@master/mod.ts");
     });
   });
 

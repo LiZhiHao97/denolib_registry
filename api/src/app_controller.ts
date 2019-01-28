@@ -2,11 +2,11 @@ import { Controller, Get, Param, Res, HttpService, Req } from "@nestjs/common";
 import { DenomodService } from "./denomod/denomod_service";
 import { Response } from "express";
 
-@Controller()
+@Controller("proxy")
 export class AppController {
   constructor(private readonly denomodService: DenomodService) {}
 
-  @Get(":scope[^badge]/:repo@:branch/*")
+  @Get(":scope/:repo@:branch/*")
   download(
     @Param("scope") scope: string,
     @Param("repo") repo: string,
@@ -20,13 +20,13 @@ export class AppController {
     );
   }
 
-  @Get(":scope[^badge]/:repo/*")
+  @Get(":scope/:repo/*")
   master(
     @Param("scope") scope: string,
     @Param("repo") repo: string,
     @Param("0") rest: string,
     @Res() res: Response
   ) {
-    res.redirect(`/${scope}/${repo}@master/${rest}`);
+    res.redirect(`/proxy/${scope}/${repo}@master/${rest}`);
   }
 }
