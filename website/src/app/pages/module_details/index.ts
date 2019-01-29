@@ -1,1 +1,1 @@
-export * from './module_details';
+export * from "./module_details";

@@ -8,16 +8,17 @@
       list-style: none;
 
       li {
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
         .info-name {
-          color: rgba(0, 0, 0, .5);
+          color: rgba(0, 0, 0, 0.5);
           margin-top: 16px;
           font-weight: 500;
         }
-        
-        .info-value, .info-value a {
-          color: rgba(0, 0, 0, .7);
+
+        .info-value,
+        .info-value a {
+          color: rgba(0, 0, 0, 0.7);
           font-weight: 700;
           font-size: 18px;
           margin-top: 10px;

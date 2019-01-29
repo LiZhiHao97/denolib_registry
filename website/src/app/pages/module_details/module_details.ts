@@ -30,15 +30,7 @@ export class ModuleDetailsInfo implements OnInit {
 
 @NgModule({
   imports: [FlexLayoutModule],
-  declarations: [
-    ModuleDetails,
-    ModuleDetailsKeywords,
-    ModuleDetailsInfo
-  ],
-  exports: [
-    ModuleDetails,
-    ModuleDetailsKeywords,
-    ModuleDetailsInfo
-  ]
+  declarations: [ModuleDetails, ModuleDetailsKeywords, ModuleDetailsInfo],
+  exports: [ModuleDetails, ModuleDetailsKeywords, ModuleDetailsInfo]
 })
 export class ModuleDetailsModule {}
