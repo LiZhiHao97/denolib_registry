@@ -1,24 +1,24 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { AppController } from "./app_controller";
+import { ProxyController } from "./proxy_controller";
 import { Response } from "express";
-import { DenomodService } from "./denomod/denomod_service";
+import { DenomodService } from "../denomod/denomod_service";
 
 const mockDenomodService = {
   updateWeeplyDownloads: (scope: string, repo: string) => {}
 };
 
-describe("AppController", () => {
-  let appController: AppController;
+describe("ProxyController", () => {
+  let proxyController: ProxyController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController]
+      controllers: [ProxyController]
     })
       .overrideProvider(DenomodService)
       .useValue(mockDenomodService)
       .compile();
 
-    appController = app.get<AppController>(AppController);
+    proxyController = app.get<ProxyController>(ProxyController);
   });
 
   describe("master", () => {
@@ -29,7 +29,7 @@ describe("AppController", () => {
           targetUrl = url;
         }
       } as Response;
-      appController.master("zhmushan", "abc", "mod.ts", res);
+      proxyController.master("zhmushan", "abc", "mod.ts", res);
       expect(targetUrl).toBe("/proxy/zhmushan/abc@master/mod.ts");
     });
   });
@@ -42,7 +42,7 @@ describe("AppController", () => {
           targetUrl = url;
         }
       } as Response;
-      appController.download("zhmushan", "abc", "master", "mod.ts", res);
+      proxyController.download("zhmushan", "abc", "master", "mod.ts", res);
       expect(targetUrl).toBe(
         "https://raw.githubusercontent.com/zhmushan/abc/master/mod.ts"
       );

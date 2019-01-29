@@ -1,9 +1,9 @@
-import { Controller, Get, Param, Res, HttpService, Req } from "@nestjs/common";
-import { DenomodService } from "./denomod/denomod_service";
+import { Controller, Get, Param, Res } from "@nestjs/common";
+import { DenomodService } from "../denomod/denomod_service";
 import { Response } from "express";
 
 @Controller("proxy")
-export class AppController {
+export class ProxyController {
   constructor(private readonly denomodService: DenomodService) {}
 
   @Get(":scope/:repo@:branch/*")

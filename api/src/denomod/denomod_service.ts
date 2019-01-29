@@ -3,13 +3,15 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { DenomodRepo } from "./denomod_repo";
 import { Denomod } from "./denomod_entity";
 import { DENOLIB_JSON_URL } from "../common/tool";
+import { ElasticsearchService } from "@nestjs/elasticsearch";
 
 @Injectable()
 export class DenomodService {
   constructor(
     @InjectRepository(DenomodRepo)
     private readonly denomodRepo: DenomodRepo,
-    private readonly httpService: HttpService
+    private readonly httpService: HttpService,
+    private readonly elasticsearchService: ElasticsearchService
   ) {}
 
   initEntity(scope: string, repo: string) {
@@ -41,7 +43,13 @@ export class DenomodService {
             denomod[field] = resp.data[field];
           }
         }
-        this.denomodRepo.save(denomod);
+        const entity = await this.denomodRepo.save(denomod);
+        this.elasticsearchService.create({
+          id: entity.id,
+          index: "deno",
+          type: "module",
+          body: denomod
+        });
       } catch (err) {
         // TODO
       }
@@ -55,5 +63,13 @@ export class DenomodService {
     }
     ++denomod.weeklyDownloads[denomod.weeklyDownloads.length - 1];
     this.denomodRepo.save(denomod);
+  }
+
+  total() {
+    return this.denomodRepo.count();
+  }
+
+  findOne(scope: string, repo: string) {
+    return this.denomodRepo.findByScopeAndRepo(scope, repo);
   }
 }
